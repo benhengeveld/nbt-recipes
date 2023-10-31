@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "minecraft:amethyst_shard",
+    "count": 1,
+    "data": {
+      "display": {
+        "Name": "[{\"text\":\"Experience Crystal\",\"italic\":false}]",
+        "Lore": [
+          "[{\"text\":\"Experience: 0\",\"italic\":false}]"
+        ]
+      },
+      "Experience": 0,
+      "Enchantments": [{}]
+    }
+  }
+}
