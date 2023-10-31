@@ -18,19 +18,27 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(ShapedRecipe.class)
 public class MixinShapedRecipe {
+    private static final String DATA_TAG = "data";
     private static NbtCompound currentNbtData;
 
-    @Inject(method = "outputFromJson", at = @At(value = "INVOKE", target = "com/google/gson/JsonObject.has(Ljava/lang/String;)Z", remap = false))
+    @Inject(
+            method = "outputFromJson",
+            at = @At(
+                    value = "INVOKE",
+                    target = "com/google/gson/JsonObject.has(Ljava/lang/String;)Z",
+                    remap = false
+            )
+    )
     private static void getRecipesNbtData(JsonObject json, CallbackInfoReturnable<ItemStack> infoReturnable) {
         currentNbtData = null;
 
-        if(json.has("data")) {
+        if(json.has(DATA_TAG)) {
             String nbtString;
 
-            if(JsonHelper.hasString(json, "data")) {
-                nbtString = json.get("data").getAsString();
+            if(JsonHelper.hasString(json, DATA_TAG)) {
+                nbtString = json.get(DATA_TAG).getAsString();
             } else {
-                nbtString = JsonHelper.getObject(json, "data").toString();
+                nbtString = JsonHelper.getObject(json, DATA_TAG).toString();
             }
 
             try{
@@ -43,7 +51,12 @@ public class MixinShapedRecipe {
         }
     }
 
-    @Inject(method = "outputFromJson", at = @At("RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILHARD)
+    @Inject(
+            method = "outputFromJson",
+            at = @At("RETURN"),
+            cancellable = true,
+            locals = LocalCapture.CAPTURE_FAILHARD
+    )
     private static void setRecipesNbtData(JsonObject json, CallbackInfoReturnable<ItemStack> infoReturnable, Item item, int amount) {
         ItemStack stack = new ItemStack(item, amount);
 

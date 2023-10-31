@@ -4,7 +4,9 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"MixinShapedRecipe",
-		"MixinItemStack"
+		"MixinItemStack",
+		"MixinCookingRecipeSerializer",
+		"MixinAbstractFurnaceBlockEntity"
 	],
 	"injectors": {
 		"defaultRequire": 1

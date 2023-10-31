@@ -1,0 +1,22 @@
+{
+  "type": "smelting",
+  "ingredient": {
+    "item": "minecraft:stick"
+  },
+  "result": {
+    "item": "minecraft:diamond",
+    "count": 10,
+    "data": {
+      "display": {
+        "Name": "[{\"text\":\"Experience Diamond\",\"italic\":false}]",
+        "Lore": [
+          "[{\"text\":\"Experience: 0\",\"italic\":false}]"
+        ]
+      },
+      "Experience": 0,
+      "Enchantments": [{}]
+    }
+  },
+  "experience": 1,
+  "cookingtime": 20
+}
