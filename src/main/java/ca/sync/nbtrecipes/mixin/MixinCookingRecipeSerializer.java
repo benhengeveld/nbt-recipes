@@ -3,7 +3,6 @@ package ca.sync.nbtrecipes.mixin;
 import ca.sync.nbtrecipes.utils.IItemStack;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
