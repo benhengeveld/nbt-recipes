@@ -1,4 +1,4 @@
-package ca.sync.nbtrecipes.mixin;
+package ca.sync.nbtrecipes.mixin.smelting;
 
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.item.ItemStack;

@@ -3,10 +3,11 @@
 	"package": "ca.sync.nbtrecipes.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"MixinShapedRecipe",
 		"MixinItemStack",
-		"MixinCookingRecipeSerializer",
-		"MixinAbstractFurnaceBlockEntity"
+		"crafting.MixinShapedRecipe",
+		"smelting.MixinCookingRecipeSerializer",
+		"smelting.MixinAbstractFurnaceBlockEntity",
+		"stonecutting.MixinCuttingRecipeSerializer"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -1,4 +1,4 @@
-package ca.sync.nbtrecipes.mixin;
+package ca.sync.nbtrecipes.mixin.smelting;
 
 import ca.sync.nbtrecipes.utils.IItemStack;
 import com.google.gson.JsonElement;
@@ -61,7 +61,10 @@ public class MixinCookingRecipeSerializer {
     )
     public void setRecipesNbtData(Identifier identifier, JsonObject jsonObject, CallbackInfoReturnable<AbstractCookingRecipe> infoReturnable, String string, CookingRecipeCategory cookingRecipeCategory, JsonElement jsonElement, Ingredient ingredient, String string2, Identifier identifier2, ItemStack stack, float f, int i) {
         if(currentNbtData != null) {
-            ((IItemStack) (Object) stack).setRawTag(currentNbtData);
+            NbtCompound nbtData = currentNbtData.copy();
+            currentNbtData = null;
+
+            ((IItemStack) (Object) stack).setRawTag(nbtData);
         }
 
         if(currentItemCount != null) {

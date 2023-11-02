@@ -1,4 +1,4 @@
-package ca.sync.nbtrecipes.mixin;
+package ca.sync.nbtrecipes.mixin.crafting;
 
 import ca.sync.nbtrecipes.utils.IItemStack;
 import com.google.gson.JsonObject;

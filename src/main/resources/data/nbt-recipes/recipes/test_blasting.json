@@ -1,14 +1,14 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:blasting",
   "ingredient": {
     "item": "minecraft:stick"
   },
   "result": {
-    "item": "minecraft:diamond",
-    "count": 10,
+    "item": "minecraft:iron_ingot",
+    "count": 3,
     "data": {
       "display": {
-        "Name": "[{\"text\":\"Experience Diamond\",\"italic\":false}]",
+        "Name": "[{\"text\":\"Experience Iron\",\"italic\":false}]",
         "Lore": [
           "[{\"text\":\"Experience: 0\",\"italic\":false}]"
         ]
@@ -17,6 +17,6 @@
       "Enchantments": [{}]
     }
   },
-  "experience": 1,
+  "experience": 3,
   "cookingtime": 20
 }

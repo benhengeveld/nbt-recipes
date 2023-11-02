@@ -1,14 +1,14 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:stick"
+    "item": "minecraft:diamond"
   },
   "result": {
-    "item": "minecraft:diamond",
+    "item": "minecraft:emerald",
     "count": 10,
     "data": {
       "display": {
-        "Name": "[{\"text\":\"Experience Diamond\",\"italic\":false}]",
+        "Name": "[{\"text\":\"Experience Emerald\",\"italic\":false}]",
         "Lore": [
           "[{\"text\":\"Experience: 0\",\"italic\":false}]"
         ]
@@ -17,6 +17,5 @@
       "Enchantments": [{}]
     }
   },
-  "experience": 1,
-  "cookingtime": 20
+  "count": 1
 }
