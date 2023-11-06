@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://www.sy-nc.ca/",
-		"sources": "https://github.com/benhengeveld/nbt-recipe-1.20.1"
+		"sources": "https://github.com/benhengeveld/nbt-recipe"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/nbt-recipes/icon.png",
