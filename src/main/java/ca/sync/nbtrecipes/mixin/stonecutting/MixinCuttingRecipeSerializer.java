@@ -1,5 +1,6 @@
 package ca.sync.nbtrecipes.mixin.stonecutting;
 
+import ca.sync.nbtrecipes.NbtRecipes;
 import ca.sync.nbtrecipes.utils.IItemStack;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
@@ -22,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(CuttingRecipe.Serializer.class)
 public class MixinCuttingRecipeSerializer {
-    private static Integer currentItemCount;
     private static NbtCompound currentNbtData;
 
     @Redirect(
@@ -33,7 +33,6 @@ public class MixinCuttingRecipeSerializer {
             )
     )
     public String getItemIdentifier(JsonObject jsonObject, String resultPropertyName) {
-        currentItemCount = null;
         currentNbtData = null;
 
         if (!jsonObject.has(resultPropertyName) || !jsonObject.get(resultPropertyName).isJsonObject()) {
@@ -41,15 +40,27 @@ public class MixinCuttingRecipeSerializer {
         }
 
         ItemStack output = ShapedRecipe.outputFromJson(jsonObject.getAsJsonObject(resultPropertyName));
-
-        if(output.getCount() < 1){
-            throw new JsonSyntaxException("Invalid output count: " + output.getCount());
-        }
-
-        currentItemCount = output.getCount();
         currentNbtData = output.getNbt();
 
         return Registries.ITEM.getId(output.getItem()).toString();
+    }
+
+    @Redirect(
+            method = "read(Lnet/minecraft/util/Identifier;Lcom/google/gson/JsonObject;)Lnet/minecraft/recipe/CuttingRecipe;",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/util/JsonHelper;getInt(Lcom/google/gson/JsonObject;Ljava/lang/String;)I"
+            )
+    )
+    public int getItemCount(JsonObject jsonObject, String element) {
+        if (jsonObject.has("result") && jsonObject.get("result").isJsonObject()) {
+            JsonObject resultItemJson = jsonObject.getAsJsonObject("result");
+            if(resultItemJson.has(element)) {
+                return JsonHelper.getInt(resultItemJson, element);
+            }
+        }
+
+        return JsonHelper.getInt(jsonObject, element);
     }
 
     @Inject(
@@ -63,10 +74,6 @@ public class MixinCuttingRecipeSerializer {
             currentNbtData = null;
 
             ((IItemStack) (Object) stack).setRawTag(nbtData);
-        }
-
-        if(currentItemCount != null) {
-            stack.setCount(currentItemCount);
         }
     }
 }
