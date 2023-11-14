@@ -49,7 +49,7 @@ Adds the ability to add NBT data to the result of JSON recipes, but keeps the ab
       },
       "Enchantments": [{}]
     }
-  }
+  },
   "experience": 1,
   "cookingtime": 20
 }
